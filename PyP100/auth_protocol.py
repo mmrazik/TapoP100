@@ -6,10 +6,10 @@ import uuid
 from base64 import b64encode, b64decode
 
 import requests
-from Crypto.Hash import SHA256, SHA1
-from Crypto.PublicKey import RSA
-from Crypto.Random import get_random_bytes
-from Crypto.Cipher import AES, PKCS1_v1_5
+from Cryptodome.Hash import SHA256, SHA1
+from Cryptodome.PublicKey import RSA
+from Cryptodome.Random import get_random_bytes
+from Cryptodome.Cipher import AES, PKCS1_v1_5
 import json
 import tempfile
 

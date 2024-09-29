@@ -1,7 +1,7 @@
 import logging
 from base64 import b64decode
 
-from PyP100 import MeasureInterval
+from TapoP100.PyP100 import MeasureInterval
 
 from .auth_protocol import AuthProtocol, OldProtocol
 
@@ -111,9 +111,18 @@ class Metering(Device):
     def getEnergyUsage(self) -> dict:
         return self.request("get_energy_usage")
 
-    def getEnergyData(self, start_timestamp: int, end_timestamp: int, interval: MeasureInterval) -> dict:
+    def getEnergyData(
+        self, start_timestamp: int, end_timestamp: int, interval: MeasureInterval
+    ) -> dict:
         """Hours are always ignored, start is rounded to midnight, first day of month or first of January based on interval"""
-        return self.request("get_energy_data", {"start_timestamp": start_timestamp, "end_timestamp": end_timestamp, "interval": interval.value})
+        return self.request(
+            "get_energy_data",
+            {
+                "start_timestamp": start_timestamp,
+                "end_timestamp": end_timestamp,
+                "interval": interval.value,
+            },
+        )
 
 
 class Color(Device):
